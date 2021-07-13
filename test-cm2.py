@@ -14,9 +14,9 @@
             for i in range(1, heartbeats):
                 time.sleep(10)
                 hb_response = self.client.post(new_uri, auth=("ccc",""))
-                print(hb_response.content)
-            del_session_response = self.client.post(new_uri, auth=("ccc",""))
-            print(del_session_response.content)
+                print('hb response is ', hb_response.content)
+            del_session_response = self.client.delete(new_uri, auth=("ccc",""))
+            print('del respone is ', del_session_response.content)
         @task
         def stats(self):
             self.client.get("/")
