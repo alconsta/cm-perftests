@@ -1,10 +1,10 @@
-from locust import HttpLocust, TaskSet, task
-class UserTasks(TaskSet):
-    @task
-    def index(self):
-        self.client.get("/v2/metadata", auth=("ccc",""))
-    @task
-    def stats(self):
-        self.client.get("/")
-class WebsiteUser(HttpLocust):
-    task_set = UserTasks
+    from locust import HttpLocust, TaskSet, task
+    class UserTasks(TaskSet):
+        @task
+        def index(self):
+            self.client.get("/v2/metadata", auth=("ccc",""))
+        @task
+        def stats(self):
+            self.client.get("/")
+    class WebsiteUser(HttpLocust):
+        task_set = UserTasks
