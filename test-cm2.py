@@ -12,7 +12,7 @@
             print('location is ', location)
             for i in range(heartbeats):
                 hb_response = self.client.post("/v2/sessions/test_mvpd/user_test", auth=("ccc",""))
-                print(hb_response.body.to_string())
+                print(hb_response.content)
         @task
         def stats(self):
             self.client.get("/")
