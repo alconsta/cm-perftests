@@ -12,7 +12,7 @@
             new_uri = "/v2/sessions/test_mvpd/user_test" + '/' + session_id
             print('location is ', session_id)
             for i in range(1, heartbeats):
-                time.sleep(60)
+                time.sleep(10)
                 hb_response = self.client.post(new_uri, auth=("ccc",""))
                 print(hb_response.content)
             del_session_response = self.client.post(new_uri, auth=("ccc",""))
