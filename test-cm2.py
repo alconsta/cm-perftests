@@ -4,7 +4,8 @@
     class UserTasks(TaskSet):
         @task
         def user_workflow(self):
-            heartbeats = randint(2, 5)        
+            heartbeats = randint(2, 5) 
+            print('number of heartbeats', heartbeats)
             self.client.get("/v2/metadata", auth=("ccc",""))
             init_session_response = self.client.post("/v2/sessions/test_mvpd/user_test", auth=("ccc",""))
             session_id = init_session_response.headers['Location']
