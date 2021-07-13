@@ -4,8 +4,8 @@
         def index(self):
             self.client.get("/v2/metadata", auth=("ccc",""))
             response = self.client.post("/v2/sessions/test_mvpd/user_test", auth=("ccc",""))
-            print("Response body is: ", response)
-            print(response.content.decode().find('Location'))
+            location = response.json()['Location']
+            print('location is ', location )
         @task
         def stats(self):
             self.client.get("/")
