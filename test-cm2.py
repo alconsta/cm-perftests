@@ -15,6 +15,7 @@
                 time.sleep(10)
                 hb_response = self.client.post(new_uri, auth=("ccc",""))
                 print('hb response is ', hb_response.content)
+            time.sleep(10)    
             del_session_response = self.client.delete(new_uri, auth=("ccc",""))
             print('del respone is ', del_session_response.content)
         @task
