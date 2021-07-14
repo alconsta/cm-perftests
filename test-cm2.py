@@ -14,6 +14,7 @@
             userid = self.generate_subject()
             initial_uri = "/v2/sessions/" + mvpd + "/" + userid
             print('number of heartbeats', heartbeats)
+            print('initial uri is: ', initial_uri)
             self.client.get("/v2/metadata", auth=("ccc",""))
             init_session_response = self.client.post(initial_uri, auth=("ccc",""))
             session_id = init_session_response.headers['Location']
