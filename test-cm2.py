@@ -26,8 +26,5 @@ class UserTasks(TaskSet):
         time.sleep(heartbeat_time)    
         del_session_response = self.client.delete(new_uri, auth=("ccc",""))
         print('del respone is ', del_session_response)
-    @task
-    def stats(self):
-        self.client.get("/")
 class WebsiteUser(HttpLocust):
     task_set = UserTasks
