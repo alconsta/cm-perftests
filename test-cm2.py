@@ -9,7 +9,7 @@
         @task
         def user_workflow(self):
             heartbeats = randrange(2, 5)
-            heartbeat_time = 10
+            heartbeat_time = 60
             mvpd = "test_mvpd"
             userid = self.generate_subject()
             initial_uri = "/v2/sessions/" + mvpd + "/" + userid
@@ -27,8 +27,5 @@
             time.sleep(heartbeat_time)    
             del_session_response = self.client.delete(new_uri, auth=("ccc",""))
             print('del respone is ', del_session_response.content)
-        @task
-        def stats(self):
-            self.client.get("/")
     class WebsiteUser(HttpLocust):
         task_set = UserTasks
