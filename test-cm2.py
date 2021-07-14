@@ -1,14 +1,21 @@
     from locust import HttpLocust, TaskSet, task
-    from random import randint, randrange
-    import time
+    from random import randrange, choices
+    import time, string
     class UserTasks(TaskSet):
+        def generate_subject():
+            length = randrange(14, 38)
+            subejctid = ''.join(choices(string.ascii_letters+string.digits+'-',k=length))
+            return subejctid
         @task
         def user_workflow(self):
-            heartbeats = randint(2, 5)
+            heartbeats = randrange(2, 5)
             heartbeat_time = 10
+            mvpd = "test_mvpd"
+            userid = self.generate_subject()
+            initial_uri = "/v2/sessions/" + mvpd + "/" + userid
             print('number of heartbeats', heartbeats)
             self.client.get("/v2/metadata", auth=("ccc",""))
-            init_session_response = self.client.post("/v2/sessions/test_mvpd/user_test", auth=("ccc",""))
+            init_session_response = self.client.post(initial_uri, auth=("ccc",""))
             session_id = init_session_response.headers['Location']
             new_uri = "/v2/sessions/test_mvpd/user_test" + '/' + session_id
             print('location is ', session_id)
