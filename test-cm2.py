@@ -11,7 +11,7 @@
             heartbeats = randrange(2, 5)
             heartbeat_time = 10
             mvpd = "test_mvpd"
-            userid = self.generate_subject(self)
+            userid = self.generate_subject()
             initial_uri = "/v2/sessions/" + mvpd + "/" + userid
             print('number of heartbeats', heartbeats)
             print('initial uri is: ', initial_uri)
